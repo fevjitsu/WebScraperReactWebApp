@@ -7,35 +7,30 @@ export default function ScraperForm() {
     const [showResult, setShowResult] = useState(false);
     const [dataResult, setDataResult] = useState(undefined);
     //functions block
-    const scrapeData = async (url, keywords) => {     
+    const scrapeData = async (urlToScrape, keywords) => {     
         //create route for accepting url and keywords.
-        const webscraperDTO = { CreatedDate: undefined, UrlToScrape: url, Keywords: keywords };        
+        const dto = { CreatedDate: 0, UrlToScrape: urlToScrape, Keywords: keywords };        
+
         const response = await fetch('webscraper/PostDataToScrape', {
-            method: 'POST',
+            method: 'post',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'accept': 'application/json',
+                'content-type': 'application/json'
             },
-            body: JSON.stringify(webscraperDTO)
-        });        
+            body: JSON.stringify({ dto })
+        });  
+        
         const data = await response.json();
+        //
         if (data) {
+            console.log(data);
             setDataResult(data);
         }
     }
     const handleSubmit = (e) => {        
-        e.preventDefault();
+        e.preventDefault();        
         scrapeData(urlToScrape, keywordsToScrapeFor);        
-    };
-    useEffect(() => {
-        console.log('loading....', urlToScrape, keywordsToScrapeFor);
-        
-    }, [urlToScrape, keywordsToScrapeFor]);
-
-    useEffect(() => {
-        console.log('loading....', dataResult);
-
-    }, [dataResult]);
+    };    
 
     const ShowForm = () => {
         return (

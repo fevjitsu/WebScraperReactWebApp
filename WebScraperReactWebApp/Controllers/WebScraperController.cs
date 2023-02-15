@@ -13,7 +13,10 @@ namespace WebScraperWebAppReact.Controllers
     public class WebScraperController : ControllerBase
     {
         private readonly ILogger<WebScraperController> _logger;
-        private WebScraperDTO webScraperDTO = new WebScraperDTO() { CreatedDate = DateTime.Now };
+        private WebScraperDTO webScraperDTO = new WebScraperDTO() 
+        {
+            CreatedDate = DateTime.Now                         
+        };
         private Scraper scraper;
         //constructor
         public WebScraperController(ILogger<WebScraperController> logger)
@@ -45,7 +48,7 @@ namespace WebScraperWebAppReact.Controllers
         [HttpPost("[action]")]
         public ActionResult PostDataToScrape(WebScraperDTO dto)
         {
-            if (string.IsNullOrEmpty(dto.UrlToScrape) || dto.Keywords == null) 
+            if (string.IsNullOrEmpty(dto.UrlToScrape) || dto.Keywords == null)
             {
                 return BadRequest("url or keywords cannot be empty.");
             }
@@ -57,7 +60,7 @@ namespace WebScraperWebAppReact.Controllers
             this.CallScrapeUrl();
             return Ok(webScraperDTO);
         }
-
+      
         public void CallScrapeUrl()
         {            
             //after gathering details from source scrape url

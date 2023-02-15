@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using System.Security.Cryptography.X509Certificates;
 
 namespace WebScraperWebAppReact.Utils
 {
@@ -10,15 +11,8 @@ namespace WebScraperWebAppReact.Utils
         public Scraper() 
         {
             this.url = "https://canadapost-postescanada.ca/cpc/en/personal.page";
-        }
-        /**
-         Constructor: url only
-         */
-        public Scraper(string url)
-        {
-            this.url = url;
-            this.keywords = new List<string>();
-        }
+            this.keywords = new List<string>(){"Mail","Post","Canada"};
+        }        
         /**
          Constructor: url and keywords
          */
@@ -41,35 +35,24 @@ namespace WebScraperWebAppReact.Utils
             var node = htmlDoc.DocumentNode.SelectSingleNode("//head/title");
             var htmlBody = htmlDoc.DocumentNode.SelectSingleNode("//body");
             HtmlNodeCollection childNodes = htmlBody.ChildNodes;
-            var words = this.keywords;          
 
-            //array for nodes
-            List<string> lines = new List<string>();
-           
-            //foreach (var cNode in childNodes) 
-            //{
-            //    if (cNode.NodeType == HtmlNodeType.Element)
-            //    {
-            //        //add nodes if kerywords found in node.               
-            //        foreach (var w in words) 
-            //        {
-            //            bool found = cNode.OuterHtml.Contains(w);
-            //            if (found) 
-            //            {
-            //                lines.Add(cNode.InnerHtml);
-            //                Console.WriteLine(cNode.InnerHtml);
-            //            }
-            //        }
-                    
-            //    }
-            //}
-
-            if (lines.Count > 0) 
-            {
-                //Extensions.WriteToTextFile(lines.ToArray());
+            foreach (var cn in childNodes) {
+                string content = cn.InnerText;
+                Console.WriteLine("Node Name: " + cn.Name + "\n" + cn.OuterHtml + "\n" + cn.InnerText + "\n" + cn.InnerHtml);
             }
             
-            Console.WriteLine("Node Name: " + node.Name + "\n" + htmlBody.OuterHtml);                       
+            //Console.WriteLine("Node Name: " + node.Name + "\n" + htmlBody.OuterHtml);                       
+        }
+
+        private void WriteResultsToTextFile() 
+        {
+            //writes the html output to a text file.
+            List<string> lines = this.keywords;
+            if (lines.Count > 0)
+            {
+                Extensions.WriteToTextFile(lines.ToArray());
+            }            
+
         }
     }
 }
