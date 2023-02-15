@@ -1,14 +1,28 @@
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 code {
-  color: #E01A76;
+    color: #E01A76;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+#scrapeForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#scrapeForm > div {
+    display:flex;
+    justify-content:flex-end;
+}
+
+#scrapeForm > div > input {
+    width:20%;
 }

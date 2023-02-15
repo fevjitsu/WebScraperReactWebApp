@@ -46,23 +46,23 @@ namespace WebScraperWebAppReact.Utils
             //array for nodes
             List<string> lines = new List<string>();
            
-            foreach (var cNode in childNodes) 
-            {
-                if (cNode.NodeType == HtmlNodeType.Element)
-                {
-                    //add nodes if kerywords found in node.               
-                    foreach (var w in words) 
-                    {
-                        bool found = cNode.OuterHtml.Contains(w);
-                        if (found) 
-                        {
-                            lines.Add(cNode.InnerHtml);
-                            Console.WriteLine(cNode.InnerHtml);
-                        }
-                    }
+            //foreach (var cNode in childNodes) 
+            //{
+            //    if (cNode.NodeType == HtmlNodeType.Element)
+            //    {
+            //        //add nodes if kerywords found in node.               
+            //        foreach (var w in words) 
+            //        {
+            //            bool found = cNode.OuterHtml.Contains(w);
+            //            if (found) 
+            //            {
+            //                lines.Add(cNode.InnerHtml);
+            //                Console.WriteLine(cNode.InnerHtml);
+            //            }
+            //        }
                     
-                }
-            }
+            //    }
+            //}
 
             if (lines.Count > 0) 
             {

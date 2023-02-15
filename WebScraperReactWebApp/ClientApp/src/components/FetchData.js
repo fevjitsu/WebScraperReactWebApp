@@ -14,7 +14,7 @@ export class FetchData extends Component {
         const keywords = ['canada', 'mail'];
         const webscraperDTO = { CreatedDate: undefined, UrlToScrape: url, Keywords: keywords };
         const responseUrl = await fetch('webscraper/GetUrlToScrape/' + encodeURIComponent(url)); 
-        const responseKeywords = await fetch('webscraper/PostKeywordsToScrape', {
+        const responseKeywords = await fetch('webscraper/PostDataToScrape', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

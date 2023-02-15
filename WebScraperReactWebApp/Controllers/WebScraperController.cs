@@ -43,7 +43,7 @@ namespace WebScraperWebAppReact.Controllers
 
         //Get keywords for scraping
         [HttpPost("[action]")]
-        public ActionResult PostKeywordsToScrape(WebScraperDTO dto)
+        public ActionResult PostDataToScrape(WebScraperDTO dto)
         {
             if (string.IsNullOrEmpty(dto.UrlToScrape) || dto.Keywords == null) 
             {
