@@ -9,7 +9,7 @@ export default function ScraperForm() {
     //functions block
     const scrapeData = async (urlToScrape, keywords) => {     
         //create route for accepting url and keywords.
-        //const dto = { CreatedDate: 0, UrlToScrape: urlToScrape, Keywords: keywords };        
+        const dto = { CreatedDate: 0, UrlToScrape: urlToScrape, Keywords: keywords };        
 
         //const response = await fetch('webscraper/PostDataToScrape', {
         //    method: 'post',
