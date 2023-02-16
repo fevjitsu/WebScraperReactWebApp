@@ -2,30 +2,30 @@
 
 export default function ScraperForm() {
     //data collected
-    const [urlToScrape, setUrlToScrape] = useState("");
-    const [keywordsToScrapeFor, setKeywordsToScrapeFor] = useState("");
+    const [urlToScrape, setUrlToScrape] = useState("https://canadapost-postescanada.ca/cpc/en/personal.page");
+    const [keywordsToScrapeFor, setKeywordsToScrapeFor] = useState(["Mail", "Post", "Canada"]);
     const [showResult, setShowResult] = useState(false);
     const [dataResult, setDataResult] = useState(undefined);
     //functions block
     const scrapeData = async (urlToScrape, keywords) => {     
         //create route for accepting url and keywords.
-        const dto = { CreatedDate: 0, UrlToScrape: urlToScrape, Keywords: keywords };        
+        //const dto = { CreatedDate: 0, UrlToScrape: urlToScrape, Keywords: keywords };        
 
-        const response = await fetch('webscraper/PostDataToScrape', {
-            method: 'post',
-            headers: {
-                'accept': 'application/json',
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ dto })
-        });  
+        //const response = await fetch('webscraper/PostDataToScrape', {
+        //    method: 'post',
+        //    headers: {
+        //        'accept': 'application/json',
+        //        'content-type': 'application/json'
+        //    },
+        //    body: JSON.stringify(dto)
+        //});  
         
-        const data = await response.json();
-        //
-        if (data) {
-            console.log(data);
-            setDataResult(data);
-        }
+        //const data = await response.json();
+        ////
+        //if (data) {
+        //    console.log(data);
+        //    setDataResult(data);
+        //}
     }
     const handleSubmit = (e) => {        
         e.preventDefault();        
