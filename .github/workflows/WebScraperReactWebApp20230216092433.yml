@@ -1,10 +1,10 @@
-name: Build and deploy .NET Core application to Web App WebScraperReactWebApp20230216091534
+name: Build and deploy .NET Core application to Web App WebScraperReactWebApp20230216092433
 on:
   push:
     branches:
     - main
 env:
-  AZURE_WEBAPP_NAME: WebScraperReactWebApp20230216091534
+  AZURE_WEBAPP_NAME: WebScraperReactWebApp20230216092433
   AZURE_WEBAPP_PACKAGE_PATH: WebScraperReactWebApp\published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
@@ -44,5 +44,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.WebScraperReactWebApp20230216091534_83F9 }}
+        publish-profile: ${{ secrets.WebScraperReactWebApp20230216092433_2B6B }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
